@@ -11,6 +11,7 @@ run-vrx:
         -e DISPLAY=${DISPLAY} \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson/vrx_ws:/home/carson/vrx_ws \
+	-v /home/carsom/my_wamv:/home/carson/my_wamv \
 	--device=/dev/input/js0 \
 	vrx_docker
 
