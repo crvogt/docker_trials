@@ -36,6 +36,7 @@ RUN apt install -y --no-install-recommends\
         software-properties-common \
         sudo \
         wget \
+	vim \
  && apt clean
 
 # Fixing TimeZone problem reported in VRX 2019
