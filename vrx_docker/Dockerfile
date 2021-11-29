@@ -9,6 +9,6 @@ RUN apt-get install -y vim git g++ gcc build-essential
 RUN apt-get install -y ros-noetic-hector-gazebo-plugins
 RUN apt-get install -y gazebo11 libgazebo11-dev ros-noetic-xacro ros-noetic-geographic-msgs \
  ros-noetic-gazebo-ros ros-noetic-teleop-twist-keyboard
-RUN apt-get install -y ros-noetic-joy ros-noetic-joy-teleop 
+RUN apt-get install -y ros-noetic-joy ros-noetic-joy-teleop libignition-common3-graphics 
 
 CMD ["/bin/bash"]
