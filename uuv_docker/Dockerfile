@@ -66,6 +66,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-gazebo-ros-control \
     ros-${DIST}-gazebo-ros-pkgs \
     ros-${DIST}-effort-controllers \
+    ros-${DIST}-franka-description \
     ros-${DIST}-geographic-info \
     ros-${DIST}-hector-gazebo-plugins \
     ros-${DIST}-joint-state-controller \
@@ -84,12 +85,14 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-rqt \
     ros-${DIST}-rqt-common-plugins \
     ros-${DIST}-rqt-robot-plugins \
+    ros-${DIST}-rqt-joint-trajectory-controller \
     ros-${DIST}-rviz \
     ros-${DIST}-teleop-tools \
     ros-${DIST}-teleop-twist-joy \
     ros-${DIST}-teleop-twist-keyboard \
     ros-${DIST}-tf2-geometry-msgs \
     ros-${DIST}-tf2-tools \
+    ros-${DIST}-tf-conversions \
     ros-${DIST}-urdfdom-py \
     ros-${DIST}-velodyne-gazebo-plugins \
     ros-${DIST}-velodyne-simulator \

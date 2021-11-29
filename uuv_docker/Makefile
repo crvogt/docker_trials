@@ -11,6 +11,7 @@ run-uuv:
 	--gpus=all \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson/uuv_ws:/home/carson/uuv_ws \
-	--device=/dev/input/js0 \
+	-v /home/carson/moveit_ws:/home/carson/moveit_ws \
+	-v /home/carson:/home/carson \
 	uuv_docker
 
