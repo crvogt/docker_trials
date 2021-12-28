@@ -10,6 +10,6 @@ run-ogre:
 	--gpus=all \
         -e DISPLAY=${DISPLAY} \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v /home/carson/libs \
+	-v /home/carson/libs:/home/carson/libs \
 	ogre_docker
 
