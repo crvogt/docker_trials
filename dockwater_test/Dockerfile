@@ -1,4 +1,4 @@
-FROM ros:noetic-ros-base-focal
+FROM ros:noetic-ros-base
 
 # Set Ubuntu release
 ARG RELEASE=focal
@@ -71,10 +71,6 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-kdl-parser-py \
     ros-${DIST}-key-teleop \
     ros-${DIST}-move-base \
-    ros-${DIST}-moveit-commander \
-    ros-${DIST}-moveit-planners \
-    ros-${DIST}-moveit-simple-controller-manager \
-    ros-${DIST}-moveit-ros-visualization \
     ros-${DIST}-robot-localization \
     ros-${DIST}-robot-state-publisher \
     ros-${DIST}-ros-base \

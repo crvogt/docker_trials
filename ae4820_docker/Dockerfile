@@ -1,4 +1,4 @@
-FROM ros:noetic-ros-base-focal
+FROM ros:noetic-ros-base
 
 # Set Ubuntu release
 ARG RELEASE=focal
@@ -9,9 +9,13 @@ ARG DIST=noetic
 # Set Gazebo version
 ARG GAZ=gazebo11
 
-# Required utilities
+ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Required utilities 
 RUN apt update \
- && apt install -y --no-install-recommends\
+ && apt install -y --no-install-recommends \
         build-essential \
         cmake \
         cppcheck \
@@ -25,20 +29,17 @@ RUN apt update \
         protobuf-compiler \
         python3-dbg \
         python3-pip \
-        python3-scipy \
         python3-venv \
+        python3-numpy \
         qtbase5-dev \
         ruby \
         software-properties-common \
         sudo \
         wget \
+        vim \
  && apt clean
 
-# Fixing TimeZone problem reported in VRX 2019
-RUN export DEBIAN_FRONTEND=noninteractive \
- && apt update \
- && apt install -y \
-    tzdata \
+RUN apt update && apt install -y tzdata \
  && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
  && dpkg-reconfigure --frontend noninteractive tzdata \
  && apt clean
@@ -52,11 +53,6 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
  && apt install -y --no-install-recommends \
     ${GAZ} \
     lib${GAZ}-dev \
-    python3-catkin-tools \
-    python3-rosdep \
-    python3-rosinstall \
-    python3-rosinstall-generator \
-    python3-vcstool \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
     ros-${DIST}-gazebo-ros-control \
@@ -71,14 +67,9 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-kdl-parser-py \
     ros-${DIST}-key-teleop \
     ros-${DIST}-move-base \
-    ros-${DIST}-moveit-commander \
-    ros-${DIST}-moveit-planners \
-    ros-${DIST}-moveit-simple-controller-manager \
-    ros-${DIST}-moveit-ros-visualization \
     ros-${DIST}-robot-localization \
     ros-${DIST}-robot-state-publisher \
     ros-${DIST}-ros-base \
-    ros-${DIST}-ros-controllers \
     ros-${DIST}-rqt \
     ros-${DIST}-rqt-common-plugins \
     ros-${DIST}-rqt-robot-plugins \
@@ -94,14 +85,6 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-xacro \
  && apt clean
 
-# Optional: Dev. tools, applications, etc.
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gdb \
-    psmisc \
-    vim \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y --no-install-recommends
 
-## Customize your image here.
-#
-#
-## ...
+CMD ["/bin/bash"]

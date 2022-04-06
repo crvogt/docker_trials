@@ -10,8 +10,7 @@ run-vrx:
 	--gpus=all \
         -e DISPLAY=${DISPLAY} \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v /home/carson/vrx_ws:/home/carson/vrx_ws \
-	-v /home/carson/my_wamv:/home/carson/my_wamv \
+	-v /home/carson:/home/carson/ \
 	--device=/dev/input/js0 \
 	vrx_docker
 

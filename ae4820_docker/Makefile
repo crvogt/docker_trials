@@ -1,9 +1,9 @@
-.PHONY: build-uuv run-uuv
+.PHONY: build-lab run-lab
 
-build-uuv:
-	docker build -t uuv_docker .
+build-lab:
+	docker build -t lab_docker .
 
-run-uuv:
+run-lab:
 	xhost +"local:docker@" && \
         docker run -ti --rm \
         -e DISPLAY=${DISPLAY} \
@@ -12,5 +12,5 @@ run-uuv:
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson:/home/carson \
 	--device=/dev/input/js0 \
-	uuv_docker
+	lab_docker
 
