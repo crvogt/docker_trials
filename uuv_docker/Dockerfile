@@ -94,6 +94,8 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-xacro \
  && apt clean
 
+COPY .vimrc /root/
+
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gdb \
@@ -101,7 +103,3 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     && rm -rf /var/lib/apt/lists/*
 
-## Customize your image here.
-#
-#
-## ...
