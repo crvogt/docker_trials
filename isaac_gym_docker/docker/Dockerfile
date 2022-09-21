@@ -35,14 +35,17 @@ COPY docker/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
 
 WORKDIR /opt/isaacgym
 
-RUN useradd --create-home gymuser
-USER gymuser
+#RUN useradd --create-home gymuser
+#RUN usermod -aG sudo gymuser
+#USER gymuser
 
 # copy gym repo to docker
-COPY --chown=gymuser . .
+#COPY --chown=gymuser . .
+COPY . .
 
 # install gym modules
-ENV PATH="/home/gymuser/.local/bin:$PATH"
+#ENV PATH="/home/gymuser/.local/bin:$PATH"
+ENV PATH="/home/.local/bin:$PATH"
 RUN cd python && pip install -q -e .
 
 ENV NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=all

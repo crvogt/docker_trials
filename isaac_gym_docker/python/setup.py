@@ -49,6 +49,7 @@ def _do_setup():
               "pillow",
               "imageio",
               "ninja",
+              "h5py",
           ],
          )
 
