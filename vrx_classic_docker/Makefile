@@ -1,9 +1,9 @@
-.PHONY: build-vrx run-vrx
+.PHONY: build-vrx-classic run-vrx-classic
 
-build-vrx:
-	docker build -t vrx_docker .
+build-vrx-classic:
+	docker build -t vrx_classic_docker .
 
-run-vrx:
+run-vrx-classic:
 	xhost +"local:docker@" && \
         docker run -ti --rm \
 	--runtime=nvidia \
@@ -11,7 +11,6 @@ run-vrx:
         -e DISPLAY=${DISPLAY} \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson:/home/carson/ \
-	vrx_docker
-	# --device=/dev/input/js0 \
-	# vrx_docker
+	--device=/dev/input/js0 \
+	vrx_classic_docker
 

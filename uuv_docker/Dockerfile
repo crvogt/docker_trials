@@ -85,6 +85,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-teleop-twist-keyboard \
     ros-${DIST}-tf2-geometry-msgs \
     ros-${DIST}-tf2-tools \
+    ros-${DIST}-tf* \
     ros-${DIST}-urdfdom-py \
     ros-${DIST}-velodyne-gazebo-plugins \
     ros-${DIST}-velodyne-simulator \
@@ -92,6 +93,14 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
  && apt clean
 
 COPY .vimrc /root/
+
+RUN apt update && apt upgrade
+
+RUN python3 -m pip install conan==1.59
+
+RUN conan config set general.revisions_enabled=1
+RUN conan profile new default --detect > /dev/null
+RUN conan profile update settings.compiler.libcxx=libstdc++11 default
 
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \
