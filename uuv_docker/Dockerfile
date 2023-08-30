@@ -57,6 +57,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     python3-rosinstall \
     python3-rosinstall-generator \
     python3-vcstool \
+    ros-${DIST}-apriltag* \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
     ros-${DIST}-gazebo-ros-control \
@@ -94,7 +95,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
 
 COPY .vimrc /root/
 
-RUN apt update && apt upgrade
+RUN apt update && apt upgrade -y
 
 RUN python3 -m pip install conan==1.59
 
