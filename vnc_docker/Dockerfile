@@ -1,4 +1,3 @@
-#FROM ubuntu:18.04
 FROM ros:noetic-ros-base-focal
 
 # Set Ubuntu release
@@ -81,28 +80,11 @@ RUN set -ex \
 	python3-venv \
 	qtbase5-dev \
 	ruby \
-	# python modules
-	&& pip3 install --upgrade pyyaml \
 	# vnc server
-	&& wget -qO- https://sourceforge.net/projects/tigervnc/files/stable/1.9.0/tigervnc-1.9.0.x86_64.tar.gz | tar xz --strip 1 -C / \
-	# docker cli & docker-compose (for docker in docker purposes)
-	&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-	&& add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-	&& apt-get update && apt-get install --no-install-recommends -y docker-ce-cli \
-	# docker compose
-	&& curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose \
-	&& chmod +x /usr/bin/docker-compose \
-	# configure locale
-	&& locale-gen ${LC_ALL} \
-	# cleanup
-	&& apt-get remove -y apt-transport-https gnupg-agent software-properties-common \
-	&& apt-get autoremove -y \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /tmp/*
+	&& wget -qO- https://sourceforge.net/projects/tigervnc/files/stable/1.9.0/tigervnc-1.9.0.x86_64.tar.gz | tar xz --strip 1 -C / 
 
 # Fix timezone issue
-RUN export DEBIAN_FRONTEND=noninteractive \
-	&& apt update \
+RUN	apt update \
 	&& apt install -y \
 	tzdata \
 	&& ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
@@ -111,9 +93,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 # Get ROS and Gazebo
 RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > /etc/apt/sources.list.d/ros1-latest.list' \
-	&& apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
-	&& /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable ${RELEASE} main" > /etc/apt/sources.list.d/gazebo-stable.list' \
-	&& apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2486D2DD83DB69272AFE98867170598AF249743 \
+  && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
+  && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2486D2DD83DB69272AFE98867170598AF249743 \
 	&& apt update \
 	&& apt install -y --no-install-recommends \
 		${GAZ} \
@@ -155,11 +136,11 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
 		ros-${DIST}-velodyne-gazebo-plugins \	
 		ros-${DIST}-velodyne-simulator \	
 		ros-${DIST}-xacro \
-	&& apt clean 
-	# && apt-get remove -y apt-transport-https gnupg-agent software-properties-common \
-	# && apt-get autoremove -y \
-	# && rm -rf /var/lib/apt/lists/* \
-	# && rm -rf /tmp/*
+	&& apt clean \
+	&& apt-get remove -y apt-transport-https gnupg-agent software-properties-common \
+	&& apt-get autoremove -y \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /tmp/*
 
 COPY rootfs/ /
 COPY vimrc /home/user/.vimrc
@@ -172,5 +153,4 @@ ENTRYPOINT ["/tini", "-v", "--", "/usr/local/bin/docker-entrypoint"]
 
 WORKDIR $HOME
 
-#CMD ["vncstart", "0", "xfce4-terminal", "--wait"]
-CMD ["vncstart", "0", "--wait"]
+CMD ["vncstart", "0", "xfce4-terminal", "--wait"]

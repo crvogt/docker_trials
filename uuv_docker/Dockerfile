@@ -84,14 +84,22 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-teleop-tools \
     ros-${DIST}-teleop-twist-joy \
     ros-${DIST}-teleop-twist-keyboard \
+<<<<<<< HEAD
     ros-${DIST}-tf2-geometry-msgs \
     ros-${DIST}-tf2-tools \
+=======
+>>>>>>> b867ce262cf3d2c0d9a580d5b3eae77576dec5d3
     ros-${DIST}-tf* \
     ros-${DIST}-urdfdom-py \
     ros-${DIST}-velodyne-gazebo-plugins \
     ros-${DIST}-velodyne-simulator \
     ros-${DIST}-xacro \
  && apt clean
+
+RUN python3 -m pip install conan
+RUN conan config set general.revisions_enabled=1
+RUN conan profile new default --detect > /dev/null
+RUN conan profile update settings.compiler.libcxx=libstdc++11 default
 
 COPY .vimrc /root/
 
