@@ -1,9 +1,9 @@
-.PHONY: build-vrx run-vrx
+.PHONY: build-gz run-gz
 
-build-vrx:
-	docker build -t vrx_docker .
+build-gz:
+	docker build -t gz_docker .
 
-run-vrx:
+run-gz:
 	xhost +"local:docker@" && \
         docker run -ti --rm \
 	--runtime=nvidia \
@@ -12,7 +12,7 @@ run-vrx:
         -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson:/home/carson/ \
 	--device=/dev/input/js0 \
-	vrx_docker
+	gz_docker
 	# --device=/dev/input/js0 \
 	# vrx_docker
 

@@ -1,10 +1,10 @@
-FROM osrf/ros:galactic-desktop
+FROM osrf/ros:humble-desktop-full
 
 # Set Ubuntu release
 #ARG RELEASE=focal
 
 # Set ROS distribution
-ARG DIST=galactic
+ARG DIST=humble
 
 # Set Gazebo version
 #ARG GAZ=gazebo11
@@ -42,10 +42,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
  && dpkg-reconfigure --frontend noninteractive tzdata \
  && apt clean
-
-RUN apt install -y --no-install-recommends \
-  ros-${DIST}-turtlebot4-desktop \
-  ros-${DIST}-irobot-create-msgs
 
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \
