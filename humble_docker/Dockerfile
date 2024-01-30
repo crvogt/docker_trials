@@ -43,6 +43,15 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && dpkg-reconfigure --frontend noninteractive tzdata \
  && apt clean
 
+# Install ros and gazebo packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${DIST}-turtlebot4-base \
+    ros-${DIST}-turtlebot4-bringup \
+    ros-${DIST}-turtlebot4-navigation \
+    ros-${DIST}-turtlebot4-viz \
+    ros-${DIST}-turtlebot4-tutorials \
+    ros-${DIST}-turtlebot4-ignition-bringup 
+
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gdb \
