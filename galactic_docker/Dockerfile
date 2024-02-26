@@ -1,13 +1,13 @@
-FROM ros:melodic-ros-base-bionic
+FROM osrf/ros:galactic-desktop
 
 # Set Ubuntu release
-ARG RELEASE=bionic
+#ARG RELEASE=focal
 
 # Set ROS distribution
-ARG DIST=melodic
+ARG DIST=galactic
 
 # Set Gazebo version
-ARG GAZ=gazebo9
+#ARG GAZ=gazebo11
 
 # Required utilities
 RUN apt update \
@@ -23,6 +23,10 @@ RUN apt update \
         lsb-release \
         pkg-config \
         protobuf-compiler \
+        python3-dbg \
+        python3-pip \
+        python3-scipy \
+        python3-venv \
         qtbase5-dev \
         ruby \
         software-properties-common \
@@ -39,23 +43,14 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && dpkg-reconfigure --frontend noninteractive tzdata \
  && apt clean
 
-# Get ROS and Gazebo
-RUN apt update \ 
- && apt install -y --no-install-recommends \
-    ${GAZ} \
-    lib${GAZ}-dev \
-    ros-${DIST}-gazebo-plugins \
-    ros-${DIST}-gazebo-ros \
-    ros-${DIST}-gazebo-ros-control \
-    ros-${DIST}-gazebo-ros-pkgs \
-    ros-${DIST}-effort-controllers \
-    ros-${DIST}-teleop-twist-keyboard \
-    ros-${DIST}-teleop-twist-joy \
- && apt clean
-
-COPY .vimrc /root/
-
-RUN apt update && apt upgrade -y
+# Install ros and gazebo packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${DIST}-turtlebot4-base \
+    ros-${DIST}-turtlebot4-bringup \
+    ros-${DIST}-turtlebot4-navigation \
+    ros-${DIST}-turtlebot4-viz \
+    ros-${DIST}-turtlebot4-tutorials \
+    ros-${DIST}-turtlebot4-ignition-bringup 
 
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -63,4 +58,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     psmisc \
     vim \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt update && apt upgrade -y
 
