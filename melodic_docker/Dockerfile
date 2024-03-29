@@ -18,6 +18,7 @@ RUN apt update \
         curl \
         git \
         gnupg \
+        iputils-ping \
         libeigen3-dev \
         libgles2-mesa-dev \
         lsb-release \
