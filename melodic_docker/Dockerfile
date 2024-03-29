@@ -49,11 +49,13 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
  && wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add - \
  && /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable ${RELEASE} main" > /etc/apt/sources.list.d/gazebo-stable.list' \
  && wget  https://packages.osrfoundation.org/gazebo.key  -O - | sudo apt-key add - \
- && apt update \
- && apt install -y --no-install-recommends \
+ && apt update 
+
+RUN apt install -y --no-install-recommends \
     ${GAZ} \
     lib${GAZ}-dev \
     python-vcstool \
+    ros-${DIST}-axis-camera* \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
     ros-${DIST}-gazebo-ros-control \
@@ -61,6 +63,8 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-effort-controllers \
     ros-${DIST}-geographic-info \
     ros-${DIST}-hector-gazebo-plugins \
+    ros-${DIST}-image-view \
+    ros-${DIST}-image-transport-plugins \
     ros-${DIST}-joint-state-controller \
     ros-${DIST}-joint-state-publisher \
     ros-${DIST}-joy \
