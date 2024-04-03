@@ -71,6 +71,8 @@ RUN apt install -y --no-install-recommends \
     ros-${DIST}-joy-teleop \
     ros-${DIST}-kdl-parser-py \
     ros-${DIST}-key-teleop \
+    ros-${DIST}-lms1xx \
+    ros-${DIST}-lms1xx-dbgsym \
     ros-${DIST}-move-base \
     ros-${DIST}-robot-localization \
     ros-${DIST}-robot-state-publisher \
