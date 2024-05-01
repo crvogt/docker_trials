@@ -58,6 +58,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     python3-rosinstall-generator \
     python3-vcstool \
     ros-${DIST}-apriltag* \
+    ros-${DIST}-depthai-ros \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
     ros-${DIST}-gazebo-ros-control \
@@ -65,6 +66,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-effort-controllers \
     ros-${DIST}-geographic-info \
     ros-${DIST}-hector-gazebo-plugins \
+    ros-${DIST}-image-view \
     ros-${DIST}-joint-state-controller \
     ros-${DIST}-joint-state-publisher \
     ros-${DIST}-joy \
@@ -77,6 +79,8 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-robot-state-publisher \
     ros-${DIST}-ros-base \
     ros-${DIST}-ros-controllers \
+    ros-${DIST}-rosserial \
+    ros-${DIST}-rplidar-ros \
     ros-${DIST}-rqt \
     ros-${DIST}-rqt-common-plugins \
     ros-${DIST}-rqt-robot-plugins \
@@ -88,6 +92,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-tf2-tools \
     ros-${DIST}-tf* \
     ros-${DIST}-urdfdom-py \
+    ros-${DIST}-usb-cam \
     ros-${DIST}-velodyne-gazebo-plugins \
     ros-${DIST}-velodyne-simulator \
     ros-${DIST}-xacro \
