@@ -55,6 +55,9 @@ RUN apt install -y --no-install-recommends \
     ${GAZ} \
     lib${GAZ}-dev \
     python-vcstool \
+    python3-catkin-tools \
+    python3-rosdep \
+    python3-setuptools \
     ros-${DIST}-axis-camera* \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
@@ -74,6 +77,7 @@ RUN apt install -y --no-install-recommends \
     ros-${DIST}-lms1xx \
     ros-${DIST}-lms1xx-dbgsym \
     ros-${DIST}-move-base \
+    ros-${DIST}-moveit* \
     ros-${DIST}-robot-localization \
     ros-${DIST}-robot-state-publisher \
     ros-${DIST}-ros-base \
@@ -91,6 +95,12 @@ RUN apt install -y --no-install-recommends \
  && apt clean
 
 RUN pip3 install numpy
+
+#RUN python3 -m pip install conan
+RUN python3 -m pip install conan==1.59
+RUN conan config set general.revisions_enabled=1
+RUN conan profile new default --detect > /dev/null
+RUN conan profile update settings.compiler.libcxx=libstdc++11 default
 
 # Optional: Dev. tools, applications, etc.
 RUN apt-get update && apt-get install -y --no-install-recommends \

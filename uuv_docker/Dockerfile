@@ -20,6 +20,11 @@ RUN apt update \
         gnupg \
         libeigen3-dev \
         libgles2-mesa-dev \
+        libgstreamer1.0-dev \
+        libgstreamer-plugins-base1.0-dev \
+        libgstreamer-plugins-good1.0-0 \
+        libgstreamer-plugins-good1.0-dev \
+        gstreamer1.0-plugins-good \
         lsb-release \
         pkg-config \
         protobuf-compiler \
@@ -58,6 +63,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     python3-rosinstall-generator \
     python3-vcstool \
     ros-${DIST}-apriltag* \
+    ros-${DIST}-cmvision \
     ros-${DIST}-depthai-ros \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
@@ -75,10 +81,12 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-key-teleop \
     ros-${DIST}-move-base \
     ros-${DIST}-moveit* \
+    ros-${DIST}-rgbd-launch \
     ros-${DIST}-robot-localization \
     ros-${DIST}-robot-state-publisher \
     ros-${DIST}-ros-base \
     ros-${DIST}-ros-controllers \
+    ros-${DIST}-rosbridge-suite \
     ros-${DIST}-rosserial \
     ros-${DIST}-rplidar-ros \
     ros-${DIST}-rqt \
