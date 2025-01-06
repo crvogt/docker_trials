@@ -93,6 +93,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-rqt-common-plugins \
     ros-${DIST}-rqt-robot-plugins \
     ros-${DIST}-rviz \
+    ros-${DIST}-rviz-imu-plugin \
     ros-${DIST}-teleop-tools \
     ros-${DIST}-teleop-twist-joy \
     ros-${DIST}-teleop-twist-keyboard \
