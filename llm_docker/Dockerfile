@@ -28,6 +28,7 @@ RUN apt update \
         lsb-release \
         pkg-config \
         protobuf-compiler \
+        python-is-python3 \
         python3-dbg \
         python3-pip \
         python3-scipy \
