@@ -1,0 +1,7 @@
+JETSON XAVIER AGX
+For Docker, need to install nvidia tools for docker
+
+Pioneer
+Need to install rosaria dependencies
+In pioneer ws, need to have pioneer and rosaria
+
