@@ -1,9 +1,9 @@
-.PHONY: build-dai run-dai
+.PHONY: build-llm run-llm
 
-build-dai:
-	docker build -t dai_docker .
+build-llm:
+	docker build -t llm_docker .
 
-run-dai:
+run-llm:
 	xhost +"local:docker@" && \
         docker run -ti --rm \
         -e DISPLAY=${DISPLAY} \
@@ -14,5 +14,5 @@ run-dai:
 	--gpus=all \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /home/carson:/home/carson \
-	dai_docker
+	llm_docker
 
