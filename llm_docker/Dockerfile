@@ -108,8 +108,6 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-xacro \
  && apt clean
 
-COPY .vimrc /root/
-
 RUN apt update && apt upgrade -y
 
 # Optional: Dev. tools, applications, etc.
