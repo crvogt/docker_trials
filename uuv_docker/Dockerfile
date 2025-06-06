@@ -1,4 +1,4 @@
-FROM ros:noetic-ros-base-focal
+FROM osrf/ros:noetic-desktop-focal
 
 # Set Ubuntu release
 ARG RELEASE=focal
@@ -8,7 +8,8 @@ ARG DIST=noetic
 
 # Set Gazebo version
 ARG GAZ=gazebo11
-
+RUN rm /etc/apt/sources.list.d/ros1-latest.list \
+  && rm /usr/share/keyrings/ros1-latest-archive-keyring.gpg
 # Required utilities
 RUN apt update \
  && apt install -y --no-install-recommends\
