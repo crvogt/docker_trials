@@ -66,6 +66,7 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-apriltag* \
     ros-${DIST}-cmvision \
     ros-${DIST}-depthai-ros \
+    ros-${DIST}-driver-base \
     ros-${DIST}-gazebo-plugins \
     ros-${DIST}-gazebo-ros \
     ros-${DIST}-gazebo-ros-control \
@@ -73,6 +74,9 @@ RUN /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu ${RELEASE} main" > 
     ros-${DIST}-effort-controllers \
     ros-${DIST}-geographic-info \
     ros-${DIST}-hector-gazebo-plugins \
+    ros-${DIST}-husky-navigation \
+    ros-${DIST}-husky-gazebo \
+    ros-${DIST}-husky-viz \
     ros-${DIST}-image-view \
     ros-${DIST}-joint-state-controller \
     ros-${DIST}-joint-state-publisher \

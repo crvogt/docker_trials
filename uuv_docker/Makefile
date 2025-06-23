@@ -10,7 +10,9 @@ run-uuv:
 	--runtime=nvidia \
 	--privileged \
 	--gpus=all \
-        -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /dev/ttyUSB0:/dev/ttyUSB0 \
 	-v /home/carson:/home/carson \
+	--device=/dev/input/js0 \
 	uuv_docker
 
