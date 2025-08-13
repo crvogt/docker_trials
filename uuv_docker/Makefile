@@ -5,7 +5,7 @@ build-uuv:
 
 run-uuv:
 	xhost +"local:docker@" && \
-        docker run -ti --rm \
+        docker run -d -ti --rm \
         -e DISPLAY=${DISPLAY} \
 	--runtime=nvidia \
 	--privileged \

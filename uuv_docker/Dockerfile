@@ -8,8 +8,7 @@ ARG DIST=noetic
 
 # Set Gazebo version
 ARG GAZ=gazebo11
-RUN rm /etc/apt/sources.list.d/ros1-latest.list \
-  && rm /usr/share/keyrings/ros1-latest-archive-keyring.gpg
+
 # Required utilities
 RUN apt update \
  && apt install -y --no-install-recommends\
@@ -33,12 +32,20 @@ RUN apt update \
         python3-pip \
         python3-scipy \
         python3-venv \
+        python-is-python3 \
         qtbase5-dev \
         ruby \
         software-properties-common \
         sudo \
         wget \
  && apt clean
+
+RUN apt update && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt update
+
+RUN apt install -y --no-install-recommends \
+    python3.10-venv python3.10-dev
 
 # Fixing TimeZone problem reported in VRX 2019
 RUN export DEBIAN_FRONTEND=noninteractive \
