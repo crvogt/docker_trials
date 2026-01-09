@@ -1,0 +1,9 @@
+FROM base:noetic
+
+# Extended Image for ROS Development
+# Phase 1: Simulation and control development
+# Phase 2: Modify for hardware interface
+
+# Add project-specific packages here as needed
+
+# The ENTRYPOINT and CMD are inherited from base

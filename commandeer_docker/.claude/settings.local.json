@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make build-base:*)",
+      "Bash(make build-extended:*)",
+      "Bash(docker exec commandeer-container bash -c \"source /opt/ros/noetic/setup.bash && rosversion -d\")",
+      "Bash(docker exec:*)",
+      "WebSearch",
+      "Bash(chmod:*)",
+      "Bash(cat:*)",
+      "Bash(make:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}
